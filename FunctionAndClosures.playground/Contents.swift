@@ -88,3 +88,14 @@ func lessThanTen(number: Int) -> Bool {
 var numbers = [20, 19, 7, 12]
 hasAnyMatches(list: numbers, condition: lessThanTen)
 
+var newNumbers = numbers.map({ (number: Int) -> Int in
+    let result = 3 * number
+    return result
+})
+print(newNumbers)
+
+let mappedNumbers = numbers.map({ number in 3 * number})
+print(mappedNumbers)
+
+let sortedNumbers = numbers.sorted { $0 > $1 }
+print(sortedNumbers)
