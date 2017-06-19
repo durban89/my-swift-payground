@@ -44,3 +44,47 @@ let statistics = calculateStatistics(scores: [5, 3, 100, 3, 9])
 print(statistics.min)
 print(statistics.max)
 print(statistics.sum)
+
+func nestedFunc() -> Int {
+    var y = 10
+    func add() {
+        y += 5
+    }
+    
+    add()
+    return y
+}
+
+nestedFunc()
+
+// return func value
+func makeIncrementer() -> ((Int) -> Int) {
+    func addOne(number:Int) -> Int {
+        return 1 + number
+    }
+    
+    return addOne
+}
+
+let incrementer = makeIncrementer()
+incrementer(2)
+
+
+// another function as one of its arguments
+func hasAnyMatches(list:[Int], condition: (Int) -> Bool) -> Bool {
+    for item in list {
+        if condition(item) {
+            return true
+        }
+    }
+    
+    return false
+}
+
+func lessThanTen(number: Int) -> Bool {
+    return number < 10
+}
+
+var numbers = [20, 19, 7, 12]
+hasAnyMatches(list: numbers, condition: lessThanTen)
+
