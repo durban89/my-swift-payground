@@ -2,6 +2,7 @@
 
 import UIKit
 
+// Use enum to create structure
 enum Rank: Int {
     case ace = 1
     case two, three, four, five, six, seven, eight, nine, ten
@@ -67,3 +68,15 @@ case let .result(sunrise, sunset):
 case let .failure(message):
     print("Failure... \(message).")
 }
+
+// use struct to create structure
+struct Card {
+    var rank: Rank
+    var suit: Suit
+    func simpleDescription() -> String {
+        return "The \(rank.simpleDescription()) of \(suit.simpleDescription())"
+    }
+}
+
+let threeOfSpades = Card(rank: .three, suit: .spades)
+let threeOfSpadesDescription = threeOfSpades.simpleDescription()
