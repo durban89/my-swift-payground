@@ -12,3 +12,13 @@ func makeArray<Item>(repeating item:Item, numberOfTimes: Int) -> [Item] {
 
 var eArray = makeArray(repeating: "knock", numberOfTimes: 4)
 print(eArray)
+
+enum OptionalValue<Wrapped> {
+    case none
+    case some(Wrapped)
+}
+
+var possibleInteger: OptionalValue<Int> = .none
+print(possibleInteger)
+possibleInteger = .some(100)
+print(possibleInteger)
