@@ -79,6 +79,8 @@ struct EmojiArt {
 }
 
 class EmojiArtDocument: ObservableObject {
+    static let palatte: String = "😄🚄🎈🌞🌛"
+    
     @Published private var emojiArt: EmojiArt = EmojiArt()
     
     func addEmoji(text: String, at location: CGPoint, size: CGFloat, id: Int) {
@@ -126,5 +128,17 @@ extension URL {
         }
         
         return self.baseURL ?? self
+        
+    }
+}
+
+import SwiftUI
+
+
+struct EmojiArtDocumentView: View {
+    var body: some View {
+        VStack {
+            
+        }
     }
 }
