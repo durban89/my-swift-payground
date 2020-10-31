@@ -136,9 +136,23 @@ import SwiftUI
 
 
 struct EmojiArtDocumentView: View {
+    @ObservedObject var document: EmojiArtDocument
+    
     var body: some View {
-        VStack {
-            
+        VStack{
+            ScrollView(.horizontal) {
+                HStack {
+                    ForEach(EmojiArtDocument.palatte.map { String($0) }, id: \.self) { emoji in
+                        Text(emoji)
+                            .font(Font.system(size: self.defaultFontSize))
+                    }
+                }
+            }.padding(.horizontal)
+            Rectangle().foregroundColor(Color.yellow)
+                .edgesIgnoringSafeArea([.horizontal, .bottom])
         }
     }
+    
+    private let defaultFontSize: CGFloat = 40;
 }
+
