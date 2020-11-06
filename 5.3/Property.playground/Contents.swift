@@ -1,7 +1,7 @@
 import UIKit
 import SwiftUI
 
-// State wrapper 的用法
+// State Property Wrappers 的用法
 struct MyView: View {
     @State var myString: String = "Hello"
     var body: some View {
@@ -9,7 +9,7 @@ struct MyView: View {
     }
 }
 
-// Binding wrapper的用法
+// Binding Property Wrappers 的用法
 struct OtherView: View {
     @Binding var shareText: String
     
