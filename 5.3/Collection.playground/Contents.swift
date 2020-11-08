@@ -42,5 +42,13 @@ for obj in colorsObj {
 
 
 //集合系列
-//
+let ColorsSet: Set = ["red", "yellow", "green", "blue"]
+let colorsCount = ColorsSet.map { $0.count }
+print(colorsCount)
+
 //字典系列
+let dict = [2: "red", 4: "yellow", 6: "green", 8: "blue"]
+let keys = dict.map { $0.key }
+print(keys)
+let values = dict.map { $0.value }
+print(values)
