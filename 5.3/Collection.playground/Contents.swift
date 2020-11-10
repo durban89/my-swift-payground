@@ -1,54 +1,66 @@
 import UIKit
 
-// Map （swift 5.3）的使用
+// flatMap/compactMap （swift 5.3）的使用
+// flatMap/compactMap处理返回后的数组不存在nil，同时它会把Optional解包
 
-// 对集合类型中的每一个元素做一次处理，转换为新数组
-
-// ### 数组系列如下
-
-// 案例1 - 遍历每个元素
-let colors = ["red", "yellow", "green", "blue"]
-let counts = colors.map { (color: String) -> Int in
-    return color.count
-}
-
-print(counts)
-// 结果是 [3,6,5,4]
-
-// 案例2 - 更加简单的方法
-let counts1 = colors.map { $0.count }
-print(counts1)
-
-// 结果也是 [3,6,5,4]
-
-// 案例3 - 转换为对象数组（请问下转换为对象数组干啥用）
-class Color {
-    var name: String
-    init(name: String) {
-        self.name = name
+// 通常Map中过滤掉nil或者空的数据，实现方式如下
+let colors = ["red", "yellow", "green", ""]
+let colorsOfMap = colors.map { item -> Int? in
+    let length = item.count
+    guard length > 0 else {
+        return nil
     }
+    
+    return length
 }
 
-let colorsObj = colors.map { return Color(name: $0) }
+print(colorsOfMap)
 
-for obj in colorsObj {
-    print(obj.name)
+//let colorsOfFlatMap = colors.flatMap { item ->Int? in
+//    let length = item.count
+//    guard length > 0 else {
+//        return nil
+//    }
+//
+//    return length
+//}
+
+//'flatMap' is deprecated Please use compactMap(_:)
+
+let colorsOfFlatMap = colors.compactMap { item ->Int? in
+    let length = item.count
+    guard length > 0 else {
+        return nil
+    }
+    
+    return length
 }
 
-//red
-//yellow
-//green
-//blue
+print(colorsOfFlatMap)
+
+// 打开数组
+// compactMap能把（二维、N维）数组一同打开变成一个新的数组
+
+let array = [[1,2,3],[4,5,6],[7,8,9]]
+
+// 对比
+let arr1 = array.map { $0 }
+print(arr1)
+
+let arr2 = array.flatMap { $0 }
+print(arr2)
+
+// 合并数组
+// compactMap能把不同的数组合并为一个数组，合并后的数组的个数是要合并两个数组个数的乘积
+let animals = ["cat", "dog", "pig"]
+let counts = [1,2,3]
+
+let newArray = counts.flatMap { count in
+    animals.map({ animal in
+        return animal + "\(count)"
+    })
+}
+
+print(newArray)
 
 
-//集合系列
-let ColorsSet: Set = ["red", "yellow", "green", "blue"]
-let colorsCount = ColorsSet.map { $0.count }
-print(colorsCount)
-
-//字典系列
-let dict = [2: "red", 4: "yellow", 6: "green", 8: "blue"]
-let keys = dict.map { $0.key }
-print(keys)
-let values = dict.map { $0.value }
-print(values)
