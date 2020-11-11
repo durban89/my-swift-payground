@@ -64,3 +64,17 @@ let newArray = counts.flatMap { count in
 print(newArray)
 
 
+// filter
+// 过滤，可以对数组中的元素按照某种规则进行一次过滤。
+let numbers = [1, 3, 5, 7, 9]
+let filterNumbers = numbers.filter { $0 < 5 }
+print(filterNumbers)
+
+// reduce
+// 计算，可以对数组的元素进行计算
+let animals1 = ["Dog", "Cat", "Pig"]
+let string = animals1.reduce("Dog", {
+    // $0: result, $1: 数组的值
+    return $0 == "Cat" ? $1 : $0 + "," + $1
+})
+print(string)
